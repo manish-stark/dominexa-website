@@ -9,6 +9,51 @@ body {
   color: #0b3d1f;
 }
 
+
+/* HEADER */
+.main-header {
+  background: linear-gradient(135deg, #021c1e, #003b2f);
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+}
+
+.logo span {
+  color: #00d084;
+  font-size: 32px;
+}
+
+nav a {
+  color: #ccc;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00d084;
+}
+
+
+
+
 /* REMOVE DARK UI EFFECT */
 .glass {
   background: rgba(255,255,255,0.5);
