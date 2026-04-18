@@ -52,8 +52,6 @@ nav a.active {
 }
 
 
-
-
 /* REMOVE DARK UI EFFECT */
 .glass {
   background: rgba(255,255,255,0.5);
@@ -186,11 +184,11 @@ nav a.active {
 .number {
   position: absolute;
   background: white;
-    border-radius: 50px;
-    color: black;
+  border-radius: 50px;
+  color: black;
   bottom: 15px;
   left: 20px;
-    z-index: 3;
+  z-index: 3;
   padding: 6px 12px;
   transition: 0.4s ease;
 }
@@ -281,25 +279,6 @@ nav a.active {
 .service-card:hover {
   transform: translateY(-10px) scale(1.04);
   box-shadow: 0 0 50px rgba(0,255,150,0.4);
-}
-
-/* ICON */
-.service-card .icon {
-  width: 50px;
-  margin: 0 auto 20px;
-  filter: brightness(0) invert(1); /* white icon */
-}
-
-/* TEXT */
-.service-card h3 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.service-card p {
-  color: #c8adb3;
-  font-size: 14px;
 }
 /* TITLE BAR */
 .title-bar {
