@@ -43,8 +43,6 @@ document.addEventListener("mousemove", (e) => {
 });
 
 /* 3D CARD EFFECT */
-const cards = document.querySelectorAll(".service-card");
-
 cards.forEach(card => {
   card.addEventListener("mousemove", (e) => {
     const rect = card.getBoundingClientRect();
