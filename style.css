@@ -12,23 +12,83 @@ body {
 body {
   overflow-x: hidden;
 }
-
 /* HEADER */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: rgba(2, 65, 32, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(4, 234, 145, 0.05);
+}
+
+/* NAV CONTAINER */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #d9fce7;
+}
+
+.logo span {
+  color: #104f00;
+}
+
+/* NAV LINKS */
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #0b3d1f;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* HOVER UNDERLINE */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #1bffec;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* HOVER COLOR */
+nav a:hover {
+  color: #1bffec;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
-    gap: 10px;
   }
 
   nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin-top: 10px;
   }
 
   nav a {
     margin: 5px 10px;
-    font-size: 14px;
   }
 }
 
@@ -97,21 +157,6 @@ body {
   }
 }
 
-/* SPLIT GRID (VERY IMPORTANT) */
-@media (max-width: 768px) {
-  .split-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .big-card,
-  .small-card,
-  .bottom-card {
-    grid-column: span 1 !important;
-    height: 250px;
-  }
-}
-
 /* SERVICE BOX */
 @media (max-width: 768px) {
   .service-box {
@@ -119,72 +164,6 @@ body {
   }
 }
 
-/* FOOTER */
-@media (max-width: 768px) {
-  .footer-section .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .social-icons {
-    justify-content: center;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-section .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-section {
-    text-align: center;
-  }
-}
-
-/* Responsive end */
-
-
-
-
-
-/* HEADER */
-.main-header {
-  background: linear-gradient(135deg, #021c1e, #003b2f);
-  padding: 15px 30px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: bold;
-  color: white;
-}
-
-.logo span {
-  color: #00d084;
-  font-size: 32px;
-}
-
-nav a {
-  color: #ccc;
-  margin-left: 20px;
-  text-decoration: none;
-}
-
-nav a:hover,
-nav a.active {
-  color: #00d084;
-}
 
 /* GRID BG */
 .grid-bg {
@@ -216,58 +195,89 @@ nav a.active {
   border-top-left-radius: 100%;
 }
 
-/* PANELS */
-.panel {
+/*our purposs*/
+.ppt-section {
+  padding: 100px 20px;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.ppt-title {
+  font-size: 40px;
+  margin-bottom: 60px;
+  color: #111;
+}
+
+/* CONTAINER */
+.ppt-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.ppt-card {
   position: relative;
-  flex: 0.6;
-  height: 100%;
-  border-radius: 30px;
-  overflow: hidden;
-  cursor: pointer;
-  background-size: cover;
-  transition: 0.5s;
-}
-
-.panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-}
-
-.panel:hover {
-  flex: 3;
-}
-
-.vertical-text {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  margin: 5rem;
+  width: 220px;
+  padding: 80px 20px 40px;
   color: white;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  transition: 0.4s;
 }
 
-.number {
+/* TOP RIBBON */
+.ppt-card .top {
   position: absolute;
-  background: white;
-  border-radius: 50px;
-  bottom: 15px;
-  left: 20px;
-  padding: 6px 12px;
-}
-
-.content {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
+  top: -25px;
+  left: 0;
+  width: 85%;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
   color: white;
-  opacity: 0;
-  transition: 0.3s;
+  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
 }
 
-.panel:hover .content {
-  opacity: 1;
+/* COLORS (MATCH IMAGE) */
+.c1 { background: linear-gradient(180deg,#7b4da1,#5b357e); }
+.c1 .top { background:#9c6bc0; }
+
+.c2 { background: linear-gradient(180deg,#c067a6,#9a4b83); }
+.c2 .top { background:#d48bbb; }
+
+.c3 { background: linear-gradient(180deg,#ff5c8a,#d63c69); }
+.c3 .top { background:#ff87a7; }
+
+.c4 { background: linear-gradient(180deg,#ff6a2e,#d94a14); }
+.c4 .top { background:#ff946a; }
+
+.c5 { background: linear-gradient(180deg,#ffa022,#d87c00); }
+.c5 .top { background:#ffc266; }
+
+/* TEXT */
+.ppt-card h3 {
+  margin: 20px 0 10px;
 }
 
+.ppt-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* HOVER */
+.ppt-card:hover {
+  transform: translateY(-15px) scale(1.05);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .ppt-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 /* PARTNERS */
 
 .partners {
@@ -342,43 +352,83 @@ nav a.active {
   width: 50px;
 }
 
-/* SPLIT GRID */
-.split-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: repeat(3, 250px);
-  gap: 15px;
+/*happy clients*/
+.client-slider {
+  padding: 100px 20px;
+  text-align: center;
 }
 
-.split-grid div {
+.slider {
   position: relative;
   overflow: hidden;
-  border-radius: 15px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.split-grid img {
+.track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s ease;
+}
+
+.card {
+  min-width: 300px;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: 0.4s;
+}
+
+.card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* OVERLAY */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  padding: 20px;
-  width: 100%;
-  background: linear-gradient(transparent, rgba(0,0,0,0.7));
-  color: #fff;
+/* HOVER EFFECT */
+.card:hover {
+  transform: scale(1.1);
+  z-index: 5;
 }
 
-/* SERVICE BOX */
-.service-box {
-  background: linear-gradient(#064e3b,#022c22);
-  color: white;
-  padding: 30px;
-  border-radius: 15px;
+/* BUTTON */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 100; /* 🔥 FIX: arrows always on top */
 }
+
+/* thoda modern look */
+.nav:hover {
+  background: #00ff9c;
+  color: black;
+}
+
+/* make sure slider stacking correct */
+.slider {
+  position: relative;
+  z-index: 1;
+}
+
+/* slides below arrows */
+.slide {
+  z-index: 1;
+}
+
+.slide.active {
+  z-index: 5;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
 
 /* CTA CONTAINER */
 .cta-buttons {
