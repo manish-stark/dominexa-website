@@ -44,6 +44,7 @@ body {
 
 .logo span {
   color: #104f00;
+  font-family: Magneto;
 }
 
 /* NAV LINKS */
@@ -102,7 +103,6 @@ nav a:hover {
   .hero-section h1 {
     font-size: 36px !important;
   }
-
   .hero-section p {
     font-size: 16px;
     letter-spacing: 2px;
