@@ -1,75 +1,65 @@
-// Risponsive navigation
-const isMobile = window.innerWidth < 768;
+const track = document.querySelector(".track");
+const cards = document.querySelectorAll(".card");
 
-if (!isMobile) {
-  const cards = document.querySelectorAll(".service-card");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
 
-  cards.forEach(card => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
+let index = 0;
+const cardWidth = 320; // width + gap
 
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const rotateX = -(y - rect.height / 2) / 12;
-      const rotateY = (x - rect.width / 2) / 12;
-
-      card.style.transform = `
-        perspective(1000px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        scale(1.05)
-      `;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = `scale(1)`;
-    });
-  });
+function moveSlider() {
+  track.style.transform = `translateX(-${index * cardWidth}px)`;
 }
-// Risponsive end
 
+// NEXT
+nextBtn.onclick = () => {
+  index++;
+  moveSlider();
 
+  // RESET (invisible jump)
+  if (index >= cards.length / 2) {
+    setTimeout(() => {
+      track.style.transition = "none";
+      index = 0;
+      moveSlider();
 
-AOS.init({ once: true, duration: 1000 });
-
-const glow = document.getElementById("cursor-glow");
-
-document.addEventListener("mousemove", (e) => {
-  if (glow) {
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
+      setTimeout(() => {
+        track.style.transition = "transform 0.6s ease";
+      }, 50);
+    }, 600);
   }
+};
+
+// PREV
+prevBtn.onclick = () => {
+  if (index <= 0) {
+    track.style.transition = "none";
+    index = cards.length / 2;
+    moveSlider();
+
+    setTimeout(() => {
+      track.style.transition = "transform 0.6s ease";
+      index--;
+      moveSlider();
+    }, 50);
+  } else {
+    index--;
+    moveSlider();
+  }
+};
+
+// AUTO
+let auto = setInterval(() => {
+  nextBtn.click();
+}, 30000);
+
+// HOVER STOP
+document.querySelector(".slider").addEventListener("mouseenter", () => {
+  clearInterval(auto);
 });
 
-/* 3D CARD EFFECT */
-cards.forEach(card => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const rotateX = -(y - rect.height / 2) / 12;
-    const rotateY = (x - rect.width / 2) / 12;
-
-    card.style.transform = `
-      perspective(1000px)
-      rotateX(${rotateX}deg)
-      rotateY(${rotateY}deg)
-      scale(1.05)
-    `;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = `
-      perspective(1000px)
-      rotateX(0deg)
-      rotateY(0deg)
-      scale(1)
-    `;
-  });
+document.querySelector(".slider").addEventListener("mouseleave", () => {
+  auto = setInterval(() => {
+    nextBtn.click();
+  }, 30000);
 });
-
-// Contact form validation
-
