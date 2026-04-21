@@ -124,28 +124,6 @@ nav a:hover {
   }
 }
 
-/* SERVICES GRID */
-@media (max-width: 768px) {
-  .grid.md\:grid-cols-3 {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* SERVICE CARD */
-@media (max-width: 768px) {
-  .service-card {
-    padding: 25px;
-  }
-}
-
-/* SERVICE BOX */
-@media (max-width: 768px) {
-  .service-box {
-    padding: 20px;
-  }
-}
-
-
 /* GRID BG */
 .grid-bg {
   position: fixed;
