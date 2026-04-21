@@ -108,7 +108,10 @@ nav a:hover {
     letter-spacing: 2px;
   }
 }
-
+.D{
+  font-family: Magneto !important;
+   font-size: 100px;
+}
 /* FEATURES */
 @media (max-width: 768px) {
   .features-container {
@@ -118,28 +121,6 @@ nav a:hover {
 
   .feature-card {
     width: 100%;
-  }
-}
-
-/* PANELS (IMPORTANT FIX) */
-@media (max-width: 992px) {
-  .flex.gap-4 {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .panel {
-    flex: unset;
-    height: 200px;
-  }
-
-  .vertical-text {
-    display: none;
-  }
-
-  .content {
-    opacity: 1 !important;
-    transform: none !important;
   }
 }
 
@@ -230,7 +211,7 @@ nav a:hover {
 /* TOP RIBBON */
 .ppt-card .top {
   position: absolute;
-  top: -25px;
+  top: -10px;
   left: 0;
   width: 85%;
   padding: 15px;
